@@ -4,7 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ViewContactsModule } from './view-contacts/view-contacts.module';
-import { AppRoutingModule } from "./app-routing.module";
+import { AddEditContactsModule } from './add-edit-contacts/add-edit-contacts.module';
+import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 
 
@@ -14,7 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +24,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ReactiveFormsModule,
     MaterialModule,
     ViewContactsModule,
+    AddEditContactsModule,
     AppRoutingModule
   ],
   providers: [],
