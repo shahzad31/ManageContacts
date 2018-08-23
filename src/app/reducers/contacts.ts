@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { SET_CONTACTS, NEW_CONTACT, UPDATE_CONTACT, REMOVE_CONTACT } from '../actions/contacts.actions';
-
+import { addContactToStorage } from './utils';
 export const RESET = 'RESET';
 
 const initialState = {
@@ -13,13 +13,15 @@ export function contactReducer(state: any = initialState, action) {
       return { ...state, list: action.payload };
 
     case NEW_CONTACT:
-      return state - 1;
+      const newContact = action.payload;
+      addContactToStorage(newContact);
+      return {};
 
     case UPDATE_CONTACT:
-      return state - 1;
+      return state;
 
     case REMOVE_CONTACT:
-      return state - 1;
+      return state;
 
     case RESET:
       return 0;

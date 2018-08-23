@@ -73,6 +73,7 @@ export class AddContactComponent implements OnInit {
 
   onContactSave(data) {
     this.store.dispatch(newContact(data));
+    this.router.navigate(['/contacts']);
 
     // this.contactsService.add(data).then(result => {
     //   if (result) {

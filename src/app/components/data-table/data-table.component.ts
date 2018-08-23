@@ -13,6 +13,7 @@ export interface UserData {
 })
 export class DataTableComponent implements OnInit {
   @Input() dataSource;
+  @Input() loading;
   @Input() displayedColumns: string[] = ['id', 'name', 'age', 'email'];
 
   columns = [

@@ -13,6 +13,7 @@ import { Contact } from "../../models/contact.model";
 export class ViewContactsComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'age', 'email', 'city'];
+  loading: boolean = true;
 
   columns = [
     { id: 'id', label: 'ID' },
@@ -27,18 +28,15 @@ export class ViewContactsComponent implements OnInit {
 
   dataSource: MatTableDataSource<Contact>;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private contactsService: ContactsService) {
     this.dataSource = new MatTableDataSource([]);
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     // TODO: show and hide loader on contacts loading
     this.contactsService.store.then((result) => {
+      this.loading = false;
       this.dataSource = new MatTableDataSource(result.contacts || []);
     });
   }

@@ -27,7 +27,11 @@ class LocalStorageManager {
     //returning promise to make it async, because in real life it will probably use async operations
     return new Promise((resolve, reject) => {
       if (localStorage[this._storageName]) {
-        resolve(JSON.parse(localStorage[this._storageName]));
+        // add a fake loading time
+        setTimeout(() => {
+          resolve(JSON.parse(localStorage[this._storageName]));
+        }, 2000);
+
       } else {
         reject('Unexpected error');
       }

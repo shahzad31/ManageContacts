@@ -6,13 +6,15 @@ import { MaterialModule } from '../material.module';
 
 import { AddContactComponent } from './add-contact/add-contact.component';
 import { DynamicFormComponent } from '../components/dynamic-form/dynamic-form.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule
   ],
   declarations: [AddContactComponent, DynamicFormComponent]
 })
