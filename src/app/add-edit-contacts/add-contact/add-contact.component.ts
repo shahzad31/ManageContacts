@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactsService } from "../../services/contacts.service";
+import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { newContact } from '../../actions/contacts.actions';
 
 @Component({
   selector: 'app-add-contact',
   templateUrl: './add-contact.component.html',
-  styleUrls: ['./add-contact.component.scss']
+  styleUrls: ['./add-contact.component.scss'],
+  providers: [ContactsService]
 })
 export class AddContactComponent implements OnInit {
   contact = {
-    fullname: {
+    name: {
       label: 'Name',
-      value: 'Shahzad',
+      value: '',
       type: 'text',
       validators: {
         required: true
@@ -17,13 +22,13 @@ export class AddContactComponent implements OnInit {
     },
     gender: {
       label: 'Gender',
-      value: 'F',
+      value: 'M',
       type: 'radio',
       options: [{ label: 'Male', value: 'M' }, { label: 'Female', value: 'F' }]
     },
     age: {
       label: 'Age',
-      value: 27,
+      value: '',
       type: 'number',
       validators: {
         min: 18
@@ -31,7 +36,7 @@ export class AddContactComponent implements OnInit {
     },
     email: {
       label: 'Email',
-      value: 'test@gmail.com',
+      value: '',
       type: 'email',
       validators: {
         required: true,
@@ -61,9 +66,19 @@ export class AddContactComponent implements OnInit {
       ]
     }
   };
-  constructor() { }
+  constructor(private contactsService: ContactsService, private router: Router, private store: Store<any>) { }
 
   ngOnInit() {
+  }
+
+  onContactSave(data) {
+    this.store.dispatch(newContact(data));
+
+    // this.contactsService.add(data).then(result => {
+    //   if (result) {
+    //     this.router.navigate(['/contacts']);
+    //   }
+    // });
   }
 
 }

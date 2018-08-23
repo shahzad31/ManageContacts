@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="dynamic-form-component">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="dynamic-form-component" #formId="ngForm">
 
   <div *ngFor="let prop of contactProps">
     <div [ngSwitch]="prop.type">
@@ -17,12 +17,13 @@
         <input matInput placeholder="{{ prop.label }}" [type]="prop.type" [formControlName]="prop.key">
         <mat-error *ngIf="isInValid(prop.key)">{{getErrorMessage(prop.key)}}</mat-error>
       </mat-form-field>
-
-      <div *ngSwitchCase="'radio'" class="radio-group">
-        <label class="mat-input">{{ prop.label }} : </label>
-        <mat-radio-group [formControlName]="prop.key">
-          <mat-radio-button *ngFor="let option of prop.options" [value]="option.value">{{ option.label }}</mat-radio-button>
-        </mat-radio-group>
+      <div  class="radio-group">
+        <div *ngSwitchCase="'radio'">
+          <label class="mat-input">{{ prop.label }} : </label>
+          <mat-radio-group [formControlName]="prop.key">
+            <mat-radio-button *ngFor="let option of prop.options" [value]="option.value">{{ option.label }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
       </div>
 
       <mat-form-field *ngSwitchCase="'select'">
@@ -32,7 +33,8 @@
       </mat-form-field>
     </div>
   </div>
-  <a mat-raised-button routerLink="." color="primary">Save</a>
 
+  <div class="form-actions">
+    <button type="submit" mat-raised-button routerLink="." color="primary" [disabled]='!formId.form.valid'>Save</button>
+  </div>
 </form>
-<pre>{{ form.value | json }}</pre>

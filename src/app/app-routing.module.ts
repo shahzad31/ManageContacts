@@ -5,7 +5,7 @@ import { AddContactComponent } from './add-edit-contacts/add-contact/add-contact
 
 
 const routes: Routes = [
-  { path: 'create', component: AddContactComponent },
+  { path: 'new-contact', component: AddContactComponent },
   { path: 'contacts', component: ViewContactsComponent },
   { path: '', redirectTo: '/contacts', pathMatch: 'full' },
 ];

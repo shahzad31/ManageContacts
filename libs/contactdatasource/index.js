@@ -1,6 +1,6 @@
 import LocalStorageManager from './localStorage';
 const localStorageManager = null;
-export default createDataSource = (name='contacts', sourceType='localStorage') => {
+const CreateDataSource = (name='contacts', sourceType='localStorage') => {
   switch(sourceType){
     default:
       if (localStorageManager){
@@ -9,3 +9,4 @@ export default createDataSource = (name='contacts', sourceType='localStorage') =
       return new LocalStorageManager();
   }
 }
+export default CreateDataSource;

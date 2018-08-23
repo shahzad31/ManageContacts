@@ -1,3 +1,21 @@
-<p>
-  navbar works!
-</p>
+<div class="nav-bar">
+  <mat-toolbar color="primary" class="app-bar-container">
+    <img src="assets/logo.png" class="app-logo" />
+    <nav mat-tab-nav-bar class="app-tabs">
+      <a mat-tab-link *ngFor="let link of ['Contacts', 'New Contact']" [routerLink]="getPath(link)" routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive">
+        {{link}}
+      </a>
+    </nav>
+    <div class="user-buttons">
+      <button mat-raised-button color="accent">
+        Github
+        <mat-icon aria-label="Example icon-button with a heart icon">face</mat-icon>
+      </button>
+      <button mat-raised-button color="accent">
+        LinkedIn
+        <mat-icon aria-label="Example icon-button with a heart icon">notifications</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</div>

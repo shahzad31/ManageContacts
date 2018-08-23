@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -10,8 +10,10 @@ export class DynamicFormComponent implements OnInit {
 
   form: FormGroup;
   formFieldControls = {};
-  @Input() formSchema;
   contactProps = [];
+  
+  @Input() formSchema;
+  @Output() submitForm: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() {
     for (const prop of Object.keys(this.formSchema)) {
@@ -58,5 +60,9 @@ export class DynamicFormComponent implements OnInit {
     } else {
       return [];
     }
+  }
+
+  onSubmit(){
+    this.submitForm.emit(this.form.value);
   }
 }
