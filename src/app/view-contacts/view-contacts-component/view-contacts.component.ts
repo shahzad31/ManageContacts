@@ -12,7 +12,7 @@ import { Contact } from "../../models/contact.model";
 })
 export class ViewContactsComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'age', 'email', 'city'];
+  displayedColumns: string[] = ['select', 'id', 'name', 'age', 'email', 'city'];
   loading: boolean = true;
 
   columns = [

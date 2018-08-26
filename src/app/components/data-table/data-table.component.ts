@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, Sort } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, Sort, MatSortable } from '@angular/material';
+import { SelectionModel } from '@angular/cdk/collections';
 export interface UserData {
   id: string;
   name: string;
@@ -15,7 +16,8 @@ export class DataTableComponent implements OnInit {
   @Input() data;
   @Input() loading;
   @Input() dataSource;
-  
+  @Input() enableSelection: boolean = true;
+
   @Input() displayedColumns: string[] = [];
   @Input() columns: any[] = [];
   sortedData = [];
@@ -23,8 +25,7 @@ export class DataTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  sortedDataSource = null;
-  
+  selection = new SelectionModel<any>(true, []);
 
   constructor() {
   }
@@ -32,7 +33,6 @@ export class DataTableComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    
   }
 
   applyFilter(filterValue: string) {
@@ -43,7 +43,7 @@ export class DataTableComponent implements OnInit {
     }
   }
   sortData(sort: Sort) {
-    
+
     const data = this.dataSource.filteredData.slice();
     if (!sort.active || sort.direction === '') {
       return;
@@ -55,7 +55,19 @@ export class DataTableComponent implements OnInit {
       return compare(a[sort.active], b[sort.active], isAsc);
     });
     this.dataSource = new MatTableDataSource(sortedData || []);
-    }
+  }
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource.data.forEach(row => this.selection.select(row));
+  }
 }
 
 function compare(a, b, isAsc) {
