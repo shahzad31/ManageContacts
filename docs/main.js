@@ -439,7 +439,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"data-table-component\">\n  <mat-form-field>\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\n  </mat-form-field>\n\n  <div class=\"mat-elevation-z8\">\n    <div class=\"spinner-container\" *ngIf=\"loading\">\n      <mat-spinner class=\"loading-spinner\"></mat-spinner>\n    </div>\n    <table *ngIf=\"!loading\" mat-table [dataSource]=\"dataSource\" matSort>\n\n      <!-- ID Column -->\n      <ng-container *ngFor=\"let col of columns\" [matColumnDef]=\"col.id\">\n        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{col.label}} </th>\n        <td mat-cell *matCellDef=\"let row\"> {{row[col.id]}} </td>\n      </ng-container>\n\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\">\n      </tr>\n    </table>\n\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\"></mat-paginator>\n  </div>\n</div>"
+module.exports = "<div class=\"data-table-component\">\n  <mat-form-field>\n    <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\n  </mat-form-field>\n\n  <div class=\"mat-elevation-z8\">\n    <div class=\"spinner-container\" *ngIf=\"loading\">\n      <mat-spinner class=\"loading-spinner\"></mat-spinner>\n    </div>\n    <table *ngIf=\"!loading\" mat-table [dataSource]=\"dataSource\" matSort (matSortChange)=\"sortData($event)\">\n\n      <!-- ID Column -->\n      <ng-container *ngFor=\"let col of columns\" [matColumnDef]=\"col.id\">\n        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{col.label}} </th>\n        <td mat-cell *matCellDef=\"let row\"> {{row[col.id]}} </td>\n      </ng-container>\n\n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\">\n      </tr>\n    </table>\n\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\"></mat-paginator>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -479,17 +479,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var DataTableComponent = /** @class */ (function () {
     function DataTableComponent() {
-        this.displayedColumns = ['id', 'name', 'age', 'email'];
-        this.columns = [
-            { id: 'id', label: 'ID' },
-            { id: 'name', label: 'Name' },
-            { id: 'age', label: 'Age' },
-            { id: 'gender', label: 'Gender' },
-            { id: 'address', label: 'Address' },
-            { id: 'city', label: 'City' },
-            { id: 'country', label: 'Country' },
-            { id: 'email', label: 'Email' }
-        ];
+        this.displayedColumns = [];
+        this.columns = [];
+        this.sortedData = [];
+        this.sortedDataSource = null;
     }
     DataTableComponent.prototype.ngOnInit = function () {
         this.dataSource.paginator = this.paginator;
@@ -501,18 +494,38 @@ var DataTableComponent = /** @class */ (function () {
             this.dataSource.paginator.firstPage();
         }
     };
+    DataTableComponent.prototype.sortData = function (sort) {
+        var data = this.dataSource.filteredData.slice();
+        if (!sort.active || sort.direction === '') {
+            return;
+        }
+        var sortedData = data.sort(function (a, b) {
+            var isAsc = sort.direction === 'asc';
+            var attr = sort.active;
+            return compare(a[sort.active], b[sort.active], isAsc);
+        });
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](sortedData || []);
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
-    ], DataTableComponent.prototype, "dataSource", void 0);
+    ], DataTableComponent.prototype, "data", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], DataTableComponent.prototype, "loading", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], DataTableComponent.prototype, "dataSource", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array)
     ], DataTableComponent.prototype, "displayedColumns", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], DataTableComponent.prototype, "columns", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"]),
         __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"])
@@ -532,6 +545,9 @@ var DataTableComponent = /** @class */ (function () {
     return DataTableComponent;
 }());
 
+function compare(a, b, isAsc) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
 
 
 /***/ }),
@@ -1032,7 +1048,7 @@ var ContactsService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"contact-list\">\n  <app-data-table [loading] = 'loading' [dataSource]=\"dataSource\" [displayedColumns]='displayedColumns'></app-data-table>\n  <button class=\"new-btn\" mat-raised-button color=\"warn\" [routerLink]=\"['/new-contact']\">New Contact</button>\n</div>"
+module.exports = "<div class=\"contact-list\">\n  <app-data-table [loading] = 'loading' [columns]=\"columns\" [dataSource]=\"dataSource\" [displayedColumns]='displayedColumns'></app-data-table>\n  <button class=\"new-btn\" mat-raised-button color=\"warn\" [routerLink]=\"['/new-contact']\">New Contact</button>\n</div>"
 
 /***/ }),
 
