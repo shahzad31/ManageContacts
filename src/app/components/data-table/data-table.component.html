@@ -7,7 +7,7 @@
     <div class="spinner-container" *ngIf="loading">
       <mat-spinner class="loading-spinner"></mat-spinner>
     </div>
-    <table *ngIf="!loading" mat-table [dataSource]="dataSource" matSort>
+    <table *ngIf="!loading" mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
 
       <!-- ID Column -->
       <ng-container *ngFor="let col of columns" [matColumnDef]="col.id">

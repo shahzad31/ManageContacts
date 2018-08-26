@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, Sort } from '@angular/material';
 export interface UserData {
   id: string;
   name: string;
@@ -12,23 +12,19 @@ export interface UserData {
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit {
-  @Input() dataSource;
+  @Input() data;
   @Input() loading;
-  @Input() displayedColumns: string[] = ['id', 'name', 'age', 'email'];
-
-  columns = [
-    { id: 'id', label: 'ID' },
-    { id: 'name', label: 'Name' },
-    { id: 'age', label: 'Age' },
-    { id: 'gender', label: 'Gender' },
-    { id: 'address', label: 'Address' },
-    { id: 'city', label: 'City' },
-    { id: 'country', label: 'Country' },
-    { id: 'email', label: 'Email' }
-  ]
+  @Input() dataSource;
+  
+  @Input() displayedColumns: string[] = [];
+  @Input() columns: any[] = [];
+  sortedData = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  sortedDataSource = null;
+  
 
   constructor() {
   }
@@ -36,6 +32,7 @@ export class DataTableComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    
   }
 
   applyFilter(filterValue: string) {
@@ -45,4 +42,22 @@ export class DataTableComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  sortData(sort: Sort) {
+    
+    const data = this.dataSource.filteredData.slice();
+    if (!sort.active || sort.direction === '') {
+      return;
+    }
+
+    const sortedData = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      const attr = sort.active;
+      return compare(a[sort.active], b[sort.active], isAsc);
+    });
+    this.dataSource = new MatTableDataSource(sortedData || []);
+    }
+}
+
+function compare(a, b, isAsc) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
