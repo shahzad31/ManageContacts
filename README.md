@@ -1,15 +1,14 @@
-# Managecontacts
+# Manage contacts
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.4.
-
+This is a demo application which is managing contacts via local storage, user can view contacts, in filter, sortable
+table and as well as add them via a dynamic form.
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Online Demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
+Application is deployed at https://shahzad31.github.io/ManageContacts/, you can go there and view different parts of the app.
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
