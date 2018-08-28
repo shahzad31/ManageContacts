@@ -2,7 +2,12 @@
 
 This is a demo application which is managing contacts via local storage, user can view contacts, in filter, sortable
 table and as well as add them via a dynamic form.
-## Development server
+## Modules
+
+# Common Components
+  1. NavBar
+  2. Data Table
+  3. Dynamic Form
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
