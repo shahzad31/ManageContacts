@@ -11,7 +11,7 @@ export class DynamicFormComponent implements OnInit {
   form: FormGroup;
   formFieldControls = {};
   contactProps = [];
-  
+
   @Input() formSchema;
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
 
@@ -41,9 +41,9 @@ export class DynamicFormComponent implements OnInit {
   getErrorMessage(key) {
     return this.formFieldControls[key].hasError('required') ? 'You must enter a value' :
       this.formFieldControls[key].hasError('email') ? 'Not a valid email' :
-      this.formFieldControls[key].hasError('min') ? `You have to provide a value greater or
+        this.formFieldControls[key].hasError('min') ? `You have to provide a value greater or
       equal to ${this.formFieldControls[key].errors.min.min}` :
-        '';
+          '';
   }
 
   mapValidator(validators) {
@@ -62,7 +62,7 @@ export class DynamicFormComponent implements OnInit {
     }
   }
 
-  onSubmit(){
+  onSubmit() {
     this.submitForm.emit(this.form.value);
   }
 }

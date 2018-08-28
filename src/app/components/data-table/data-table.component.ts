@@ -16,7 +16,7 @@ export class DataTableComponent implements OnInit {
   @Input() data;
   @Input() loading;
   @Input() dataSource;
-  @Input() enableSelection: boolean = true;
+  @Input() enableSelection = true;
 
   @Input() displayedColumns: string[] = [];
   @Input() columns: any[] = [];
