@@ -16,6 +16,26 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "contact-list": [
+        "dist/contact-list"
+      ],
+      "contact-list/*": [
+        "dist/contact-list/*"
+      ],
+      "contact-add-edit": [
+        "dist/contact-add-edit"
+      ],
+      "contact-add-edit/*": [
+        "dist/contact-add-edit/*"
+      ],
+      "common-components": [
+        "dist/common-components"
+      ],
+      "common-components/*": [
+        "dist/common-components/*"
+      ]
+    }
   }
 }

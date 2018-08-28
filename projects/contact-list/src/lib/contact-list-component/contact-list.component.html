@@ -1,0 +1,12 @@
+<div class="contact-list">
+  <ht-data-table [loading]='loading' [columns]="columns" [dataSource]="dataSource" [displayedColumns]='displayedColumns'></ht-data-table>
+  <button class="new-btn" mat-raised-button color="warn">Delete Contacts
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button class="new-btn" mat-raised-button color="accent" [routerLink]="['/new-contact']">Edit Contact
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button class="new-btn" mat-raised-button color="primary" [routerLink]="['/new-contact']">New Contact
+    <mat-icon>create_new_folder</mat-icon>
+  </button>
+</div>

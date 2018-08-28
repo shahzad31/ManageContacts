@@ -1,0 +1,22 @@
+.nav-bar {
+    .app-bar-container {
+        background: #6f6e6e;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .app-tabs {
+            margin: 0 130px;
+            flex: 2;
+            border-bottom-width: 0;
+            ::ng-deep .mat-tab-link {
+                padding: 0;
+                min-width: 116px;
+            }
+        }
+        .user-buttons {
+            a {
+                margin-left: 16px;
+            }
+        }
+    }
+}

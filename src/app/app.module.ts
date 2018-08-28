@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
+import { ContactListModule } from '../../projects/contact-list/src/public_api';
+import { ContactAddEditModule } from '../../projects/contact-add-edit/src/public_api';
+
 import { ViewContactsModule } from './view-contacts/view-contacts.module';
 import { AddEditContactsModule } from './add-edit-contacts/add-edit-contacts.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +33,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MaterialModule,
     ViewContactsModule,
     AddEditContactsModule,
+    ContactListModule,
+    ContactAddEditModule,
     AppRoutingModule,
     StoreModule.forRoot({ app: appReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 10, }),

@@ -6,12 +6,15 @@ import { ViewContactsComponent } from './view-contacts-component/view-contacts.c
 import { DataTableComponent } from '../components/data-table/data-table.component';
 import { RouterModule } from '@angular/router';
 
+import { ContactListModule } from '../../../projects/contact-list/src/public_api';
+
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    ContactListModule
   ],
   declarations: [ViewContactsComponent, DataTableComponent]
 })
