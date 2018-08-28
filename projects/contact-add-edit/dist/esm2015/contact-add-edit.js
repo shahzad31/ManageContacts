@@ -1,0 +1,12 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+/**
+ * Generated bundle index. Do not edit.
+ */
+export { ContactAddEditService, NewContactComponent, ContactAddEditModule } from './public_api';
+export { MaterialModule as ɵb } from './lib/material.module';
+export { ContactAddEditService as ɵa } from './lib/service/contact-list.service';
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29udGFjdC1hZGQtZWRpdC5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2NvbnRhY3QtYWRkLWVkaXQvIiwic291cmNlcyI6WyJjb250YWN0LWFkZC1lZGl0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFJQSxpRkFBYyxjQUFjLENBQUM7QUFFN0IsT0FBTyxFQUFDLGNBQWMsSUFBSSxFQUFFLEVBQUMsTUFBTSx1QkFBdUIsQ0FBQztBQUMzRCxPQUFPLEVBQUMscUJBQXFCLElBQUksRUFBRSxFQUFDLE1BQU0sb0NBQW9DLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEdlbmVyYXRlZCBidW5kbGUgaW5kZXguIERvIG5vdCBlZGl0LlxuICovXG5cbmV4cG9ydCAqIGZyb20gJy4vcHVibGljX2FwaSc7XG5cbmV4cG9ydCB7TWF0ZXJpYWxNb2R1bGUgYXMgybVifSBmcm9tICcuL2xpYi9tYXRlcmlhbC5tb2R1bGUnO1xuZXhwb3J0IHtDb250YWN0QWRkRWRpdFNlcnZpY2UgYXMgybVhfSBmcm9tICcuL2xpYi9zZXJ2aWNlL2NvbnRhY3QtbGlzdC5zZXJ2aWNlJzsiXX0=

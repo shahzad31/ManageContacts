@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ViewContactsComponent } from './view-contacts/view-contacts-component/view-contacts.component';
-import { AddContactComponent } from './add-edit-contacts/add-contact/add-contact.component';
+import { ViewContactsComponent } from './routes/contacts/view-contacts.component';
+import { NewContactComponent } from './routes/new-contact/new-contact.component';
 
 
 const routes: Routes = [
-  { path: 'new-contact', component: AddContactComponent },
+  { path: 'new-contact', component: NewContactComponent },
   { path: 'contacts', component: ViewContactsComponent },
   { path: '', redirectTo: '/contacts', pathMatch: 'full' },
 ];

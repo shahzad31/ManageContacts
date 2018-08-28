@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { ContactListComponent } from './contact-list-component/contact-list.component';
 import { MaterialModule } from './material.module';
-import { CommonComponentsModule } from '../../../common-components/src/public_api';
+import { CommonComponentsModule } from 'ht-common-components/dist';
 
 @NgModule({
   imports: [
