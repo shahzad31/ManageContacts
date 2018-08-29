@@ -1,0 +1,13 @@
+{
+  "name": "ht-contact-add-edit",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/forms": "^6.1.0",
+    "@angular/cdk": "^6.4.5",
+    "@angular/material": "^6.4.5",
+    "ht-common-components": "^0.0.1",
+    "contactsdatasource": "^1.0.1"
+  }
+}

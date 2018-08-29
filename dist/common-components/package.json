@@ -1,0 +1,25 @@
+{
+  "name": "ht-common-components",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^6.1.0",
+    "@angular/core": "^6.1.0",
+    "@angular/forms": "^6.1.0",
+    "@angular/cdk": "^6.4.5",
+    "@angular/material": "^6.4.5",
+    "@angular/router": "^6.1.0"
+  },
+  "main": "bundles/ht-common-components.umd.js",
+  "module": "fesm5/ht-common-components.js",
+  "es2015": "fesm2015/ht-common-components.js",
+  "esm5": "esm5/ht-common-components.js",
+  "esm2015": "esm2015/ht-common-components.js",
+  "fesm5": "fesm5/ht-common-components.js",
+  "fesm2015": "fesm2015/ht-common-components.js",
+  "typings": "ht-common-components.d.ts",
+  "metadata": "ht-common-components.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
