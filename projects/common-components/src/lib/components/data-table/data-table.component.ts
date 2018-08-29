@@ -1,12 +1,7 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, Sort, MatSortable } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
+
 @Component({
   selector: 'ht-data-table',
   templateUrl: './data-table.component.html',
