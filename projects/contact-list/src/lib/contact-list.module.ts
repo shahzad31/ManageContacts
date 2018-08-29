@@ -9,6 +9,8 @@ import { MaterialModule } from './material.module';
 import { ContactListComponent } from './contact-list-component/contact-list.component';
 import { CommonComponentsModule } from 'ht-common-components/dist';
 
+// import { CommonComponentsModule } from '../../../common-components/src/public_api';
+
 @NgModule({
   imports: [
     CommonModule,

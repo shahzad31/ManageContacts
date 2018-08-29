@@ -24,9 +24,9 @@ describe('ViewContactsComponent', () => {
         MaterialModule,
         CommonComponentsModule
       ],
-      declarations: [ ContactListComponent ]
+      declarations: [ContactListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -37,5 +37,29 @@ describe('ViewContactsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should contain data source', () => {
+    expect(component.dataSource).toBeTruthy();
+  });
+
+  it('it should contain data table', () => {
+    const listElem: HTMLElement = fixture.nativeElement;
+    expect(listElem.querySelector('ht-data-table') instanceof HTMLElement).toBeTruthy();
+  });
+
+  it('change filter value', () => {
+    const hostElement = fixture.nativeElement;
+    const filterInput: HTMLInputElement = hostElement.querySelector('input');
+
+    filterInput.value = 'a';
+
+    // dispatch a DOM event so that Angular learns of input value change.
+    filterInput.dispatchEvent(new Event('input'));
+
+    // Tell Angular to update the display binding through the title pipe
+    fixture.detectChanges();
+
+    expect(filterInput.value).toBe('a');
   });
 });

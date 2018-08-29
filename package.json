@@ -28,8 +28,8 @@
     "contactsdatasource": "^1.0.1",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
-    "ht-common-components": "^0.0.2",
-    "ht-contact-list": "^0.0.1",
+    "ht-common-components": "^0.0.3",
+    "ht-contact-list": "^0.0.2",
     "ht-contact-add-edit": "^0.0.1",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"

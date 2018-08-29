@@ -7,7 +7,7 @@
     "@angular/forms": "^6.1.0",
     "@angular/cdk": "^6.4.5",
     "@angular/material": "^6.4.5",
-    "ht-common-components": "^0.0.1",
+    "ht-common-components": "^0.0.3",
     "contactsdatasource": "^1.0.1"
   }
 }

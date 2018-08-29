@@ -7,6 +7,10 @@ import { CommonComponentsModule } from 'ht-common-components/dist';
 import { ContactAddEditModule } from 'ht-contact-add-edit/dist';
 import { ContactListModule } from 'ht-contact-list/dist';
 
+
+// for live testing
+// import { ContactListModule } from '../../projects/contact-list/src/public_api';
+
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 

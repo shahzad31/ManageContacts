@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {  MatTableDataSource } from '@angular/material';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
 import { ContactListService } from '../service/contact-list.service';
 import { Contact } from '../model/contact.model';
 
@@ -11,8 +11,13 @@ import { Contact } from '../model/contact.model';
 })
 export class ContactListComponent implements OnInit {
 
+  @Output() addAction: EventEmitter<any> = new EventEmitter();
+  @Output() editAction: EventEmitter<any> = new EventEmitter();
+  @Output() deleteAction: EventEmitter<any> = new EventEmitter();
+
   displayedColumns: string[] = ['select', 'id', 'name', 'age', 'email', 'city'];
   loading = true;
+  selected = [];
 
   columns = [
     { id: 'id', label: 'ID' },
@@ -33,18 +38,25 @@ export class ContactListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO: show and hide loader on contacts loading
     this.contactsService.store.then((result) => {
       this.loading = false;
       this.dataSource = new MatTableDataSource(result.contacts || []);
     });
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  onSelectionChange(changes) {
+    this.selected = changes.source.selected;
+  }
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  onAdd(event) {
+    this.addAction.emit(event);
+  }
+
+  onEdit(event) {
+    this.editAction.emit(event);
+  }
+
+  onDelete(event) {
+    this.deleteAction.emit(event);
   }
 }

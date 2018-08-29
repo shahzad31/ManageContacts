@@ -1,12 +1,6 @@
-import { OnInit } from '@angular/core';
+import { OnInit, EventEmitter } from '@angular/core';
 import { MatPaginator, MatSort, Sort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
-export interface UserData {
-    id: string;
-    name: string;
-    progress: string;
-    color: string;
-}
 export declare class DataTableComponent implements OnInit {
     data: any;
     loading: any;
@@ -14,6 +8,7 @@ export declare class DataTableComponent implements OnInit {
     enableSelection: boolean;
     displayedColumns: string[];
     columns: any[];
+    selectionChange: EventEmitter<any>;
     sortedData: any[];
     paginator: MatPaginator;
     sort: MatSort;

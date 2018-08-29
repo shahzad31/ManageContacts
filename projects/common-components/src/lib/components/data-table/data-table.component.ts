@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource, Sort, MatSortable } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -15,6 +15,9 @@ export class DataTableComponent implements OnInit {
 
   @Input() displayedColumns: string[] = [];
   @Input() columns: any[] = [];
+
+  @Output() selectionChange: EventEmitter<any> = new EventEmitter();
+
   sortedData = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -28,6 +31,9 @@ export class DataTableComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.selection.onChange.subscribe(changes => {
+      this.selectionChange.emit(changes);
+    });
   }
 
   applyFilter(filterValue: string) {

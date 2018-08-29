@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-contacts',
@@ -8,9 +9,21 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class ViewContactsComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
+  }
+
+  onAdd() {
+    this.router.navigate(['/new-contact']);
+  }
+
+  onEdit() {
+    this.router.navigate(['/new-contact']);
+  }
+
+  onDelete() {
+
   }
 }
