@@ -4,7 +4,6 @@ import { CommonComponentsModule } from 'ht-common-components/dist';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 
 
@@ -13,7 +12,6 @@ import { MaterialModule } from './material.module';
     CommonModule,
     BrowserModule,
     FormsModule,
-    RouterModule,
     MaterialModule,
     CommonComponentsModule
   ],

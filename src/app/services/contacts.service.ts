@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
 // import CreateDataSource from '../../../libs/contactdatasource'
@@ -9,12 +9,12 @@ export class ContactsService {
   contacts: any;
   store: any;
   dataSource: any;
-  constructor(private rxStore: Store<any>){
-   this.dataSource = CreateDataSource('contacts', LOCAL_STORAGE);
+  constructor() {
+    this.dataSource = CreateDataSource('contacts', LOCAL_STORAGE);
     this.store = this.dataSource.createStore();
   }
 
-  add(data){
+  add(data) {
     return this.dataSource.addContact(data);
   }
 }

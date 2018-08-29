@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ContactAddEditService } from '../service/contact-list.service';
-import { Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
 // import { newContact } from '../../actions/contacts.actions';
 
 @Component({
@@ -11,6 +9,7 @@ import { Store, select } from '@ngrx/store';
   providers: [ContactAddEditService]
 })
 export class NewContactComponent implements OnInit {
+  @Output() saveContact: EventEmitter<any> = new EventEmitter();
   contact = {
     name: {
       label: 'Name',
@@ -66,18 +65,17 @@ export class NewContactComponent implements OnInit {
       ]
     }
   };
-  constructor(private contactsService: ContactAddEditService, private router: Router, private store: Store<any>) { }
+  constructor(private contactsService: ContactAddEditService) { }
 
   ngOnInit() {
   }
 
   onContactSave(data) {
     // this.store.dispatch(newContact(data));
-    // this.router.navigate(['/contacts']);
 
-    this.contactsService.add(data).then(result => {
+    return this.contactsService.add(data).then(result => {
       if (result) {
-        this.router.navigate(['/contacts']);
+        this.saveContact.emit(result);
       }
     });
   }

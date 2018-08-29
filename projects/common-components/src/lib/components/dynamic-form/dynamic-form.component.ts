@@ -16,7 +16,7 @@ export class DynamicFormComponent implements OnInit {
   @Output() submitForm: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() {
-    for (const prop of Object.keys(this.formSchema)) {
+    for (const prop of Object.keys(this.formSchema || {})) {
       this.formFieldControls[prop] = new FormControl(
         this.formSchema[prop].value,
         this.mapValidator(this.formSchema[prop].validators)

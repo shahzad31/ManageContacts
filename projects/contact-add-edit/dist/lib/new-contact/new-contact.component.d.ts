@@ -1,11 +1,8 @@
-import { OnInit } from '@angular/core';
+import { OnInit, EventEmitter } from '@angular/core';
 import { ContactAddEditService } from '../service/contact-list.service';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 export declare class NewContactComponent implements OnInit {
     private contactsService;
-    private router;
-    private store;
+    saveContact: EventEmitter<any>;
     contact: {
         name: {
             label: string;
@@ -60,7 +57,7 @@ export declare class NewContactComponent implements OnInit {
             }[];
         };
     };
-    constructor(contactsService: ContactAddEditService, router: Router, store: Store<any>);
+    constructor(contactsService: ContactAddEditService);
     ngOnInit(): void;
     onContactSave(data: any): void;
 }
