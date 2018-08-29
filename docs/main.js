@@ -184,7 +184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var ht_common_components_dist__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ht-common-components/dist */ "./node_modules/ht-common-components/dist/fesm5/ht-common-components.js");
 /* harmony import */ var ht_contact_add_edit_dist__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ht-contact-add-edit/dist */ "./node_modules/ht-contact-add-edit/dist/fesm5/contact-add-edit.js");
-/* harmony import */ var ht_contact_list_dist__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ht-contact-list/dist */ "./node_modules/ht-contact-list/dist/fesm5/contact-list.js");
+/* harmony import */ var ht_contact_list_dist__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ht-contact-list/dist */ "./node_modules/ht-contact-list/dist/fesm5/ht-contact-list.js");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./material.module */ "./src/app/material.module.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
@@ -206,6 +206,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+// for live testing
+// import { ContactListModule } from '../../projects/contact-list/src/public_api';
 
 
 
@@ -507,7 +509,7 @@ var getContactsList = function (data) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ht-contact-list></ht-contact-list>"
+module.exports = "<ht-contact-list (addAction)=\"onAdd($event)\" (editAction)=\"onEdit($event)\" (deleteAction)=\"onDelete($event)\"></ht-contact-list>"
 
 /***/ }),
 
@@ -533,6 +535,7 @@ module.exports = ""
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewContactsComponent", function() { return ViewContactsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -543,10 +546,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ViewContactsComponent = /** @class */ (function () {
-    function ViewContactsComponent() {
+    function ViewContactsComponent(router) {
+        this.router = router;
     }
     ViewContactsComponent.prototype.ngOnInit = function () {
+    };
+    ViewContactsComponent.prototype.onAdd = function () {
+        this.router.navigate(['/new-contact']);
+    };
+    ViewContactsComponent.prototype.onEdit = function () {
+        this.router.navigate(['/new-contact']);
+    };
+    ViewContactsComponent.prototype.onDelete = function () {
     };
     ViewContactsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -555,7 +568,7 @@ var ViewContactsComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./view-contacts.component.scss */ "./src/app/routes/contacts/view-contacts.component.scss")],
             providers: []
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], ViewContactsComponent);
     return ViewContactsComponent;
 }());
