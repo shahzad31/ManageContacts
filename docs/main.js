@@ -584,7 +584,7 @@ var ViewContactsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ht-new-contact></ht-new-contact>"
+module.exports = "<ht-new-contact (saveContactCallBack)=\"onContactSave($event)\"></ht-new-contact>"
 
 /***/ }),
 
@@ -610,6 +610,7 @@ module.exports = ".go-back-btn {\n  position: absolute;\n  bottom: 25px; }\n\n:h
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewContactComponent", function() { return NewContactComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -620,10 +621,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var NewContactComponent = /** @class */ (function () {
-    function NewContactComponent() {
+    function NewContactComponent(router) {
+        this.router = router;
     }
     NewContactComponent.prototype.ngOnInit = function () {
+    };
+    NewContactComponent.prototype.onContactSave = function (event) {
+        this.router.navigate(['/contacts']);
     };
     NewContactComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -631,7 +637,7 @@ var NewContactComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./new-contact.component.html */ "./src/app/routes/new-contact/new-contact.component.html"),
             styles: [__webpack_require__(/*! ./new-contact.component.scss */ "./src/app/routes/new-contact/new-contact.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], NewContactComponent);
     return NewContactComponent;
 }());
